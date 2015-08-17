@@ -1,7 +1,7 @@
 ---
 title: "get involved"
 bg: darkred
-fa-icon: book
+fa-icon: code
 color: white
 ---
 
