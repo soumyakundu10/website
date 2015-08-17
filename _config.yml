@@ -17,7 +17,7 @@ highlighter: pygments
 ### content configuration ###
 title:       "coala - Code Analysis Made Easy"
 keywords:    "coala, review, analysis, static, bears"
-description: "coala is a simple COde AnaLysis Application. Its goal is to make static code analysis easy while remaining completely modular and therefore extendable and language independent. coala is written with a lower case "c"."
+description: "coala is a simple COde AnaLysis Application. Its goal is to make static code analysis easy while remaining completely modular and therefore extendable and language independent. coala is written with a lower case c."
 source_link: "https://github.com/coala-analyzer/coala/"
 favicon:     "https://raw.githubusercontent.com/coala-analyzer/coala-artwork/master/artwork/coala_bear.png"
 
