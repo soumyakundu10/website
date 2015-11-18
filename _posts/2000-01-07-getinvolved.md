@@ -1,6 +1,6 @@
 ---
 title: "get involved"
-bg: darkred
+bg: '#38001e'
 fa-icon: code
 color: white
 style: center
