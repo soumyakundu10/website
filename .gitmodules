@@ -1,0 +1,12 @@
+[submodule "coala"]
+    path = coala
+    url = https://github.com/coala-analyzer/coala.git
+    branch = master
+[submodule "coala-bears"]
+    path = coala-bears
+    url = https://github.com/coala-analyzer/coala-bears.git
+    branch = master
+[submodule "pyprint"]
+    path = pyprint
+    url = https://github.com/coala-analyzer/pyprint.git
+    branch = master
