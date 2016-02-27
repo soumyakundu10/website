@@ -78,11 +78,28 @@ a = Test()
   </script>
 
   <script type="text/python">
+    import os, sys, queue, json, platform
+
+    # Fix bugs in brython
+    sys.path.insert(0, "coala")
+    sys.path.insert(0, "coala-bears")
+    sys.path.insert(0, "pyprint")
+
+    # os.path.expanduser fails in coalib.misc.Constants
+    os.path.expanduser = lambda *args, **kwargs: ""
+    platform.system = lambda: "browser"
+
+    from bears.general.LineCountBear import LineCountBear
+    from coalib.settings.Section import Section
+
     from browser import document as doc
 
     def echo(*args):
+        file = doc.codeMirrorEditor.doc.getValue()
+        bear = LineCountBear(Section(), queue.Queue())
+        results = list(bear.run("from_browser", file))
         output = doc["output"]
-        output.innerHTML = doc.codeMirrorEditor.doc.getValue()
+        output.innerHTML = str(results)
 
     doc["codeBtn"].bind("click", echo)
   </script>
