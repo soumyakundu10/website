@@ -1,4 +1,3 @@
-
 $.extend($.easing,
 {
     def: 'easeOutQuad',
@@ -69,6 +68,48 @@ $.extend($.easing,
     }
 })( jQuery );
 
+// Populate contributors
+$(function(){
+    var property = function(key) {
+        return function(obj) {
+            return obj == null ? void 0 : obj[key];
+        };
+    };
+    var pluck = function(obj, key){
+        return obj.map(property(key));
+    }
+    var processData = function(data){
+        return data.map(
+            function(contributor){
+                return {
+                    commits: pluck(contributor.weeks, 'c').reduce(function(a, b) { return a+b; }),
+                    avatar: contributor.author.avatar_url,
+                    name: contributor.author.login,
+                    url: contributor.author.html_url
+                }
+            }
+        );
+	};
+	$.getJSON(
+		'https://api.github.com/repos/coala-analyzer/coala/stats/contributors',
+		function(data){
+			var processed = processData(data);
+			var sorted = processed.sort(function(a, b){
+			    return a.commits > b.commits;
+			});
+			sorted.reverse();
+			sorted.slice(0,10).forEach(function(contributor, index){
+				$template = $('#contributors .template').clone();
+				$template.removeClass('template');
+				$template.find('.gravatar').attr('src', contributor.avatar);
+				$template.find('.commits strong').text(contributor.commits);
+				$template.find('.nick a').text(contributor.name);
+				$template.find('.nick a').attr('href', contributor.url)
+				$template.show().appendTo('#contributors');
+			});
+		}
+	);
+});
 
 $(document).ready(function (){
 

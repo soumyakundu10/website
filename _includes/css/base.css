@@ -255,6 +255,34 @@
 		font-size: 13px;
 		color: #444; }
 
+/* #Contributors
+================================================= */
+#contributors {
+	padding-top: 15px;
+	padding-left: 100px;
+}
+.contributor {
+	width: 130px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	float: left;
+}
+.contributor .gravatar {
+	width: 130px;
+	height: 130px;
+	border-radius: 130px;
+}
+.contributor .nick {
+	padding-top: 7px;
+	font-size: 16px;
+	text-align: center;
+}
+.contributor .commits {
+	font-size: 16px;
+	text-align: center;
+	padding-top: 5px;
+}
+
 /* #Misc
 ================================================== */
 	.remove-bottom { margin-bottom: 0 !important; }
