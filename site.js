@@ -68,8 +68,9 @@ $.extend($.easing,
     }
 })( jQuery );
 
-// Populate contributors
+// Populate contributors section
 $(function(){
+
     var property = function(key) {
         return function(obj) {
             return obj == null ? void 0 : obj[key];
@@ -90,25 +91,37 @@ $(function(){
             }
         );
     };
-    $.getJSON(
-        'https://api.github.com/repos/coala-analyzer/coala/stats/contributors',
-        function(data){
-            var processed = processData(data);
-            var sorted = processed.sort(function(a, b){
-                return a.commits > b.commits;
-            });
-            sorted.reverse();
-            sorted.slice(0,10).forEach(function(contributor, index){
-                $template = $('#contributors .template').clone();
-                $template.removeClass('template');
-                $template.find('.gravatar').attr('src', contributor.avatar);
-                $template.find('.commits strong').text(contributor.commits);
-                $template.find('.nick a').text(contributor.name);
-                $template.find('.nick a').attr('href', contributor.url)
-                $template.show().appendTo('#contributors');
-            });
+
+    $.when(
+        $.getJSON('https://api.github.com/repos/coala-analyzer/coala/stats/contributors'),
+        $.getJSON('https://api.github.com/repos/coala-analyzer/coala-bears/stats/contributors')
+    ).done(function(data1, data2){
+        var processed = processData(data1[0].concat(data2[0]));
+        
+        for (var i = 0; i < processed.length; i++) {
+            for(var j=i+1; j < processed.length; j++) {
+                if (processed[i]['name'] == processed[j]['name']) {
+                    console.log(processed[i]['name']);
+                    processed[i]['commits'] += processed[j]['commits'];
+                    processed.splice(j, 1);
+                }
+            }
         }
-    );
+
+        var sorted = processed.sort(function(a, b){
+            return a.commits > b.commits;
+        });
+        sorted.reverse();
+        sorted.slice(0,10).forEach(function(contributor, index){
+            $template = $('#contributors .template').clone();
+            $template.removeClass('template');
+            $template.find('.gravatar').attr('src', contributor.avatar);
+            $template.find('.commits strong').text(contributor.commits);
+            $template.find('.nick a').text(contributor.name);
+            $template.find('.nick a').attr('href', contributor.url)
+            $template.show().appendTo('#contributors');
+        });
+    });
 });
 
 $(document).ready(function (){
@@ -133,4 +146,3 @@ $(document).ready(function (){
     });
 
 });
-
