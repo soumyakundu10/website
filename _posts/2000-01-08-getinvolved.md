@@ -6,8 +6,8 @@ color: white
 style: center
 ---
 
-# Help us at <http://coala.readthedocs.io/en/latest/Getting_Involved/Newcomers.html>
+# Take a look at our [newcomer docs](http://coala.readthedocs.io/en/latest/Getting_Involved/Newcomers.html)!
 
-### Or just drop us a message at <https://gitter.im/coala-analyzer/coala> - we'd love to help you personally!
+### Or just drop us a message at [Gitter](https://gitter.im/coala-analyzer/coala) - we'd love to help you personally!
 
-### If you're looking to write a bear, look at <http://coala.readthedocs.io/en/latest/Users/Tutorials/Writing_Bears.html>
+### If you're looking to write a bear, look at our [bear writing tutorial](http://coala.readthedocs.io/en/latest/Users/Tutorials/Writing_Bears.html).
