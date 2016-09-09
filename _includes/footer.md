@@ -2,7 +2,7 @@
 &mdash;
 [Issue Tracker](http://bugs.coala-analyzer.org/)
 &mdash;
-[Code](http://git.coala-analyzer.org/)
+[Code](https://github.com/coala-analyzer/coala)
 &mdash;
 [Docs](http://docs.coala-analyzer.org/)
 &mdash;
