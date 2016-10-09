@@ -93,11 +93,12 @@ $(function(){
     };
 
     $.when(
-        $.getJSON('https://api.github.com/repos/coala-analyzer/coala/stats/contributors'),
-        $.getJSON('https://api.github.com/repos/coala-analyzer/coala-bears/stats/contributors')
+        $.getJSON('https://api.github.com/repos/coala/coala/stats/contributors'),
+        $.getJSON('https://api.github.com/repos/coala/coala-bears/stats/contributors')
+        $.getJSON('https://api.github.com/repos/coala/documentation/stats/contributors')
     ).done(function(data1, data2){
         var processed = processData(data1[0].concat(data2[0]));
-        
+
         for (var i = 0; i < processed.length; i++) {
             for(var j=i+1; j < processed.length; j++) {
                 if (processed[i]['name'] == processed[j]['name']) {
